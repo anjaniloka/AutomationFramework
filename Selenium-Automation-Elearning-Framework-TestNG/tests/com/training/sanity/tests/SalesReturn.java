@@ -16,6 +16,7 @@ import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
 import com.training.pom.LoginPOM;
+import com.training.pom.ProductPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
@@ -24,6 +25,7 @@ public class SalesReturn {
 	private WebDriver driver;
 	private String baseUrl;
 	private LoginPOM loginPOM;
+	private ProductPOM productPOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -38,6 +40,7 @@ public class SalesReturn {
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		loginPOM = new LoginPOM(driver); 
+		productPOM = new ProductPOM(driver); 
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -76,10 +79,10 @@ public class SalesReturn {
 		}
 		
 		//enter OrderID name
-	    loginPOM.sendorderId("7");
+	    productPOM.sendorderId("7");
 		
 		//click filter button
-		loginPOM.clickfilterBttn();
+		productPOM.clickfilterBttn();
 		Thread.sleep(1000);
 		screenShot.captureScreenShot("selectedOrder");
 		
@@ -89,7 +92,7 @@ public class SalesReturn {
 		screenShot.captureScreenShot("selectcheckbox");
 		
 		//click on delete button
-		loginPOM.clickdeleteBttn();
+		productPOM.clickdeleteBttn();
 		Thread.sleep(1000);
 		driver.switchTo().alert().accept();
 		screenShot.captureScreenShot("deletecustomer");

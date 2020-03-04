@@ -16,6 +16,7 @@ import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
 import com.training.pom.LoginPOM;
+import com.training.pom.ProductPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 public class EditQuantityDetails {
@@ -23,6 +24,7 @@ public class EditQuantityDetails {
 	private WebDriver driver;
 	private String baseUrl;
 	private LoginPOM loginPOM;
+	private ProductPOM productPOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -37,6 +39,7 @@ public class EditQuantityDetails {
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		loginPOM = new LoginPOM(driver); 
+		productPOM = new ProductPOM(driver); 
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -97,7 +100,7 @@ public class EditQuantityDetails {
 	Thread.sleep(2000);
 	screenShot.captureScreenShot("quantityvalue");
 	
-	loginPOM.sendquantity("45");
+	productPOM.sendquantity("45");
 	screenShot.captureScreenShot("Newquantity");
 	//Default values in Links, Attribute, Option, Recurring, Discount, Special, Image, Reward Points and Design tabs
 	List<WebElement> object = driver.findElements(By.xpath("//*[@id='form-product']/ul/li"));
@@ -174,7 +177,7 @@ else
 			Thread.sleep(1000);
 		}
 		}
-	loginPOM.clicksaveBtn(); 
+	productPOM.clicksaveBtn(); 
 	screenShot.captureScreenShot("savesuccessful");
 	
 	}

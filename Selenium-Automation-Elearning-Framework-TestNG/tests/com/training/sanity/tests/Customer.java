@@ -14,8 +14,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
-
 import com.training.pom.LoginPOM;
+import com.training.pom.CustomerPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
@@ -23,7 +23,7 @@ public class Customer {
 	private WebDriver driver;
 	private String baseUrl;
 	private LoginPOM loginPOM;
-	
+	private CustomerPOM customerPOM;
 		private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -38,6 +38,7 @@ public class Customer {
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		loginPOM = new LoginPOM(driver); 
+		customerPOM = new CustomerPOM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -58,7 +59,7 @@ public class Customer {
 	loginPOM.clickLoginBtn();
 	screenShot.captureScreenShot("DashboardPage");
 	Thread.sleep(2000);
-	loginPOM.clickcustomerOpt();
+	customerPOM.clickcustomerOpt();
 	
 	driver.findElement(By.xpath("//a[@class='parent']/i[@class='fa fa-user fw']")).click();
 	Thread.sleep(2000);
@@ -70,18 +71,18 @@ public class Customer {
 	
 	//enter customer name
 	//loginPOM.sendcustomerName("manzoor");
-	loginPOM.sendcustomerName("Asmita mehadi");
+	customerPOM.sendcustomerName("Asmita mehadi");
 	
 	//click filter button
-	loginPOM.clickfilterBtn();
+	customerPOM.clickfilterBtn();
 	Thread.sleep(1000);
 	screenShot.captureScreenShot("selectedcustomer");
 	
 	//Enter customer email id
 	//loginPOM.sendcustomerEmail("manzoor@gmail.com");
-	loginPOM.sendcustomerEmail("manzoormehadi21@gmail.com");
+	customerPOM.sendcustomerEmail("manzoormehadi21@gmail.com");
 	//click filter button
-	loginPOM.clickfilterBtn();
+	customerPOM.clickfilterBtn();
 	Thread.sleep(1000);
 	screenShot.captureScreenShot("customeremail");
 	
@@ -89,6 +90,7 @@ public class Customer {
 	}
    
 }
+
 
 
 	

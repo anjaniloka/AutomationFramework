@@ -16,6 +16,7 @@ import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
 import com.training.pom.LoginPOM;
+import com.training.pom.ProductPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
@@ -23,6 +24,7 @@ public class DeleteProduct {
 	private WebDriver driver;
 	private String baseUrl;
 	private LoginPOM loginPOM;
+	private ProductPOM productPOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -37,6 +39,7 @@ public class DeleteProduct {
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		loginPOM = new LoginPOM(driver); 
+		productPOM = new ProductPOM(driver); 
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -73,9 +76,9 @@ public class DeleteProduct {
 	break;
 	}
 	}
-	loginPOM.sendprodName("EarRings");
+	productPOM.sendprodName("EarRings");
 	Thread.sleep(1000);
-	loginPOM.clickfilterBtn();
+	productPOM.clickfilterBttn();
 	Thread.sleep(1000);
 	screenShot.captureScreenShot("earrings");
 	driver.findElement (By.xpath("//input[@name='selected[]']")).click();
@@ -83,16 +86,16 @@ public class DeleteProduct {
 	screenShot.captureScreenShot("checkbox1");
 	
 	Thread.sleep(2000);
-	loginPOM.sendprodName("Finger Ring");
+	productPOM.sendprodName("Finger Ring");
 	Thread.sleep(1000);
-	loginPOM.clickfilterBtn();
+	productPOM.clickfilterBttn();
 	screenShot.captureScreenShot("Finger Ring");
 	driver.findElement (By.xpath("//input[@name='selected[]']")).click();
 	Thread.sleep(2000);
 	screenShot.captureScreenShot("checkbox2");
 	
 	
-	loginPOM.clickdeleteBtn();
+	productPOM.clickdeleteBttn();
 	Thread.sleep(1000);
 	driver.switchTo().alert().accept();
 	screenShot.captureScreenShot("deleteproducts");
