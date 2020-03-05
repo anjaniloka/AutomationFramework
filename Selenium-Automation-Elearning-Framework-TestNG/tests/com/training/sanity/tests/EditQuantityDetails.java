@@ -97,11 +97,12 @@ public class EditQuantityDetails {
 	}
 	
 	driver.findElement(By.xpath("//*[@id='input-quantity']")).clear();
-	Thread.sleep(2000);
+	Thread.sleep(5000);
 	screenShot.captureScreenShot("quantityvalue");
 	
 	productPOM.sendquantity("45");
 	screenShot.captureScreenShot("Newquantity");
+	
 	//Default values in Links, Attribute, Option, Recurring, Discount, Special, Image, Reward Points and Design tabs
 	List<WebElement> object = driver.findElements(By.xpath("//*[@id='form-product']/ul/li"));
 	String flag2;
