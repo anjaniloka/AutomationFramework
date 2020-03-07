@@ -67,8 +67,46 @@ package com.training.pom;
 						this.prodName.sendKeys(prodName);
 					}
 		            			
+					//RTTC73 -complex test case
+					
+					@FindBy(xpath ="//input[@id='input-name1']")
+					
+					private WebElement productName;
+					
+					public void sendproductName(String productName) {
+						this.productName.clear();
+						this.productName.sendKeys(productName);
+					}
+					@FindBy(xpath ="//input[@id='input-meta-title1']")
+					private WebElement metatagTitle;
+					public void sendmetatagTitle(String metatagTitle) {
+						this.metatagTitle.clear();
+						this.metatagTitle.sendKeys(metatagTitle);
+					}
+					@FindBy(xpath ="//input[@id='input-model']")
+					private WebElement model;
+					public void sendmodel(String model) {
+						this.model.clear();
+						this.model.sendKeys(model);
+					}
+					@FindBy(xpath ="//input[@id='input-price']")
+					private WebElement price;
+					public void sendprice(String price) {
+						this.price.clear();
+						this.price.sendKeys(price);
+					}
+					@FindBy(xpath ="//input[@id='input-category']")
+					private WebElement category;
+					public void sendcategory(String category) {
+						this.category.clear();
+						this.category.sendKeys(category);
+					}
 	
-	
-	
-	
+					@FindBy(xpath ="//input[@id='input-name']")
+					private WebElement pname;
+					public void sendpname(String pname) {
+						this.pname.clear();
+						this.pname.sendKeys(pname);
+					}
+					
 }
